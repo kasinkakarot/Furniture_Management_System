@@ -1,5 +1,6 @@
 package furniture_management.Controller;
 
+import furniture_management.BinaryFileUtility;
 import furniture_management.Furniture;
 import javafx.event.ActionEvent;
 import javafx.scene.control.CheckBox;
@@ -19,16 +20,28 @@ public class DataCreationViewControllerYourId {
     @javafx.fxml.FXML
     private TextField furnitureDescripTF;
     @javafx.fxml.FXML
-    private ComboBox furnitureTypeCB;
+    private ComboBox<String> furnitureTypeCB;
     @javafx.fxml.FXML
     private CheckBox isImportedCB;
 
     @javafx.fxml.FXML
     public void initialize() {
+
+        furnitureTypeCB.getItems().addAll(
+                "Chair",
+                "Table",
+                "Sofa",
+                "Bed",
+                "Cabinet"
+        );
     }
 
     @javafx.fxml.FXML
     public void goToDataButtonOA(ActionEvent actionEvent) {
+
+        Furniture furniture = BinaryFileUtility.readFurniture();
+
+        System.out.println(furniture);
     }
 
     @javafx.fxml.FXML
@@ -65,6 +78,14 @@ public class DataCreationViewControllerYourId {
                     vat,
                     isImported
             );
+            BinaryFileUtility.writeFurniture(furniture);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Furniture has been added successfully");
+            alert.showAndWait();
+
         } catch (NumberFormatException e) {
             return;
         }
