@@ -1,5 +1,6 @@
 package furniture_management.Controller;
 
+import furniture_management.Furniture;
 import javafx.event.ActionEvent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -49,6 +50,21 @@ public class DataCreationViewControllerYourId {
             if (price < 0 || vat < 0 || discountPercentage < 0) {
                 return;
             }
+
+            String ID = furnitureIDTF.getText();
+            String Description = furnitureDescripTF.getText();
+            boolean isImported = isImportedCB.isSelected();
+            String Type = furnitureTypeCB.getValue().toString();
+
+            Furniture furniture = new Furniture(
+                    ID,
+                    Description,
+                    Type,
+                    price,
+                    discountPercentage,
+                    vat,
+                    isImported
+            );
         } catch (NumberFormatException e) {
             return;
         }
