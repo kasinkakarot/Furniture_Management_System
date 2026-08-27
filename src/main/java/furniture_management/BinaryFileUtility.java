@@ -1,10 +1,7 @@
 package furniture_management;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectInputStream;
+import java.io.*;
+import java.util.ArrayList;
 
 public class BinaryFileUtility {
 
@@ -46,6 +43,37 @@ public class BinaryFileUtility {
         }
 
         return null;
+    }
+    public static ArrayList<Furniture> readAllFurniture() {
+
+        ArrayList<Furniture> furnitureList = new ArrayList<>();
+
+        try {
+
+            FileInputStream fis = new FileInputStream("Furniture.bin");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            while (true) {
+
+                try {
+
+                    Furniture furniture = (Furniture) ois.readObject();
+                    furnitureList.add(furniture);
+
+                } catch (EOFException e) {
+
+                    break;
+                }
+            }
+
+            ois.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return furnitureList;
     }
 }
 

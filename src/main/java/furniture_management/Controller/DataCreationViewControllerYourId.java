@@ -2,11 +2,13 @@ package furniture_management.Controller;
 
 import furniture_management.BinaryFileUtility;
 import furniture_management.Furniture;
+import furniture_management.SceneSwitchHelper;
 import javafx.event.ActionEvent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
 public class DataCreationViewControllerYourId {
     @javafx.fxml.FXML
@@ -39,9 +41,15 @@ public class DataCreationViewControllerYourId {
     @javafx.fxml.FXML
     public void goToDataButtonOA(ActionEvent actionEvent) {
 
-        Furniture furniture = BinaryFileUtility.readFurniture();
-
-        System.out.println(furniture);
+        Stage currentStage =
+                (Stage) ((javafx.scene.Node)actionEvent.getSource())
+                        .getScene()
+                        .getWindow();
+        SceneSwitchHelper.switchScene(
+                currentStage,
+                "DataProcessingView.fxml",
+                "Data Processing View"
+        );
     }
 
     @javafx.fxml.FXML

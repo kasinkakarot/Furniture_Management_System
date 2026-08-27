@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="444.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="furniture_management.Controller.DataProcessingViewController">
+<AnchorPane prefHeight="444.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="furniture_management.Controller.DataProcessingViewController">
     <children>
         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="635.0" style="-fx-background-color: yellow;" text="Data Processing View to Load Furniture Info from Furniture.bin File">
             <font>
@@ -18,23 +18,22 @@
             </font>
         </Label>
         <Label layoutX="77.0" layoutY="50.0" prefHeight="17.0" prefWidth="168.0" style="-fx-background-color: #DDDDDD;" text="Select Furniture Type to Filter:" />
-        <ComboBox layoutX="304.0" layoutY="46.0" prefHeight="25.0" prefWidth="217.0" />
+        <ComboBox fx:id="furnitureTypeCB" layoutX="304.0" layoutY="46.0" prefHeight="25.0" prefWidth="217.0" />
         <Label layoutX="77.0" layoutY="87.0" prefHeight="17.0" prefWidth="168.0" style="-fx-background-color: #DDDDDD;" text="Enter Min Price to Filter:" />
-        <TextField layoutX="304.0" layoutY="83.0" prefHeight="25.0" prefWidth="217.0" />
-        <CheckBox layoutX="77.0" layoutY="128.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee;" text="Want to Filter Furniture which are Imported ONLY?" />
+        <TextField fx:id="minimumPriceTF" layoutX="304.0" layoutY="83.0" prefHeight="25.0" prefWidth="217.0" />
+        <CheckBox fx:id="onlyImportedCB" layoutX="77.0" layoutY="128.0" mnemonicParsing="false" style="-fx-background-color: #eeeeee;" text="Want to Filter Furniture which are Imported ONLY?" />
         <Label layoutX="77.0" layoutY="148.0" text="(if checked, filter will consider Furnitures which are imported only," />
-        <Button mnemonicParsing="false" text="Button" />
-        <Button layoutX="77.0" layoutY="194.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="487.0" text="Load Table with Furniture for the selected Type, Min Price &amp; Import Status" />
+        <Button layoutX="77.0" layoutY="194.0" mnemonicParsing="false" onAction="#loadTableButtonOA" prefHeight="25.0" prefWidth="487.0" text="Load Table with Furniture for the selected Type, Min Price &amp; Import Status" />
         <Label layoutX="77.0" layoutY="162.0" text="else If Unchecked, ALL Furnitures will be considered)" />
-        <TableView layoutX="18.0" layoutY="248.0" prefHeight="171.0" prefWidth="598.0">
+        <TableView fx:id="DataProcessingTV" layoutX="18.0" layoutY="248.0" prefHeight="171.0" prefWidth="598.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="116.0" text="Description" />
-                <TableColumn prefWidth="68.0" text="Type" />
-                <TableColumn prefWidth="68.0" text="Price" />
-                <TableColumn prefWidth="94.0" text="Discount %" />
-                <TableColumn prefWidth="87.0" text="VAT %" />
-                <TableColumn prefWidth="89.0" text="Is Imported?" />
+                <TableColumn fx:id="IDTC" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="descriptionTC" prefWidth="93.0" text="Description" />
+                <TableColumn fx:id="typeTC" prefWidth="76.0" text="Type" />
+                <TableColumn fx:id="priceTC" prefWidth="79.0" text="Price" />
+                <TableColumn fx:id="discountTC" prefWidth="101.0" text="Discount %" />
+                <TableColumn fx:id="vatTC" prefWidth="84.0" text="VAT %" />
+                <TableColumn fx:id="importedTC" prefWidth="89.0" text="Is Imported?" />
             </columns>
         </TableView>
     </children>
