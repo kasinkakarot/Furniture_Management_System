@@ -3,6 +3,7 @@ package furniture_management;
 import java.io.*;
 import java.util.ArrayList;
 
+
 public class BinaryFileUtility {
 
     public static void writeFurniture(Furniture furniture){
